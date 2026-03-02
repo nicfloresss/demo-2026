@@ -22,6 +22,7 @@ class ContactoController extends Controller
 
 
         //insertar base de datos
+        
 
         //redireccionar a otra pagina 
 
