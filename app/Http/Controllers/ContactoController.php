@@ -12,7 +12,9 @@ class ContactoController extends Controller
      */
     public function index()
     {
-        //
+        return view('contactos.contacto-index',)
+        ->with(['contactos' => Contacto::all()
+        ]);
     }
 
     /**
@@ -20,7 +22,7 @@ class ContactoController extends Controller
      */
     public function create()
     {
-        //
+        return view('contactos.contacto-create');
     }
 
     /**
@@ -28,8 +30,20 @@ class ContactoController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
+        $request->validate([
+           'nombre' => 'required',
+        'email' => 'required|email',
+        'mensaje' => 'required|min:10'
+        ]);   
+
+        $contacto = new Contacto();
+        $contacto->nombre = $request->nombre;   
+        $contacto->email = $request->email; 
+        $contacto->mensaje = $request->mensaje;
+        $contacto->save();
+
+        return redirect()->route('contactos.index');
+         }
 
     /**
      * Display the specified resource.
