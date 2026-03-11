@@ -8,6 +8,9 @@
 <body>
     <h1>Formulario de Contacto</h1>
     
+    <p>
+        <a href="{{ route('contactos.index') }}">Volver a la lista de contactos</a>
+    </p>
    {{--   @if ($errors->any())
         <div class="alert alert-danger">
             <ul>
@@ -19,7 +22,7 @@
     @endif
 --}}
     
-    <form action="recibe-formulario" method="POST">
+    <form action="/contactos" method="POST">
         @csrf
         <label for="nombre">Nombre:</label>
         <input type="text" id="nombre" name="nombre" required value="{{ old('nombre') }}">
@@ -42,6 +45,7 @@
         @enderror
         <br><br>
 
-        <button type="submit">Enviar</button>
+        <input type="submit" value="Enviar">
+    </form>
 </body>
 </html>
